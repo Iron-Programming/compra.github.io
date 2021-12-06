@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<!--
+**********COPRAM**********
+* Welcome to COPRAM, a learning platform designed to help you learn programming and C++: one of the most widely used languages, learned by coders all over the world!
+* If you have been wanting to learn C++ but don't know where to start, you have come to the right place!
+* I will introduce programming as a new topic, using C++ as our target language. This way, we will learn our programming languages in general, and C++ specific syntax.
+* Along the way, we will learn how to code in a variety of different coding environments, as well as acquiring several great coding resources!
+* Does this sound interesting? If so, buckle up and get ready, we have a lot of fun coding to do ahead of us!
+* 
+**********COPYRIGHT NOTICE**********
+* All C++ code given here is free to use: it is in the public domain for all reasons. Please note that if I ever credit a source in my code, you must also credit the same source when using that part of the code.
+-->
+
+<!-- HTML code; Hyper Text Markup Language -->
+<html>
+   <!-- The <head> tag stores metadata (data about data) -->
+    <head>
+        <!-- Unicode Standard; using a transformation format of 8bit --> 
+        <meta charset="utf-8">
+        <!-- Title of Webpage -->
+        <title>COPRAM v0.5: Learn C++.</title>
+        
+        <!-- Access material icons -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        
+        <!-- Access google fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Akronim&family=Bebas+Neue&family=Bebas+Neue&family&family=Oxygen&display=swap" rel="stylesheet">
+        
+        <!-- file.css to style general webpage -->
+        <style>
+            /* visibility classes */
+            .show {
+                display: block;
+            }
+            .hide {
+                display: none;
+            }
+            
+            /* styling the header */
+            header {
+                background-color: rgb(135, 83, 43);
+                width: 100%;
+                height: 50px;
+                margin: 0px;
+                padding: 10px;
+                box-shadow: 0px 1px 20px 0px rgb(46, 34, 6);
+            }
+            header h1 {
+                margin: 0px 0px 0px 31%;
+                padding: 0px;
+                color: rgb(54, 35, 9);
+                border: none;
+                letter-spacing: 12px;
+            }
+            
+            /* styling the sidebar navigation */
+            #sidebar {
+                width: 65px;
+                height: 45px;
+                position: fixed;
+                top: 210px;
+                z-index: 25;
+            }
+            #sidebar button {
+                background-color: rgb(56, 43, 12); 
+                cursor: pointer;
+                border: none;
+                font-size: 16px;
+                height: 45px;
+                width: 45px;
+                color: white;
+                float: left;
+                outline: none;
+            }
+            #sidebar button:not(:last-child) {
+                border-right: none; 
+            }
+            /* clear floats (clearfix hack) */
+            #sidebar:after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+            #sidebar button:hover {
+                background-color: rgb(135, 93, 30);
+            }
+            #sidebar button.selected {
+                background-color: rgb(158, 105, 12);
+            }
+            #coding-pageButton {
+                border-radius: 0px 0px 15px 0px;
+            }
+            #home-pageButton {
+                border-radius: 0px 15px 0px 0px;
+            }
+            .open {
+                transition: left 0.2s ease-in-out;
+                left: 0px;
+            }
+            .close {
+                transition: left 0.2s ease-in-out;
+                left: -40px;
+            }
+            #hoverOpen {
+                position: relative;
+                display: inline-block;
+                left: 40px;
+                top: -108px;
+                font-size: 35px;
+            }
+            
+            /* Styling the main content of our website */
+            body {
+                background-color: rgb(255, 255, 255);
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            .page {
+                min-height: 440px;
+            }
+            .page-title {
+                font-size: 30px;
+                margin-left: 25px;
+            }
+            
+            /* Styling menu page */
+            .menu-block {
+                display: inline-block;
+                background-color: rgb(36, 222, 213, 0.8);
+                width: 285px;
+                height: 200px;
+                margin: 5px;
+            }
+            .menu-block h3, .menu-block p {
+                margin-left: 10px;
+            }
+            
+            
+            /* Stylin the footer */
+            footer {
+                width: 100%;
+                height: 120px;
+                background-color: rgb(230, 206, 175);
+                margin-top: 50px;
+            }
+            footer section {
+                display: inline-table;
+                margin: 0px 20px 0px 20px;
+            }
+            footer h6 {
+                font-size: 12px;
+            }
+            /* Footer Button(s) */
+            #teamButton {
+                background-color: transparent;
+                border: none;
+                color: rgb(0, 47, 255);
+                font-weight: bold;
+                text-decoration: underline;
+                padding: 0px;
+            }
+            #teamButton:hover {
+                cursor: pointer;
+            }
+            
+            p {
+                font-family: 'Noto Serif', serif;
+                margin-left: 7%;
+                width: 86%;
+            }
+            h1 {
+                font-family: 'Akronim', cursive;
+                padding-left: 4%;
+                border-bottom: 2px solid rgb(255, 140, 0);
+                width: 86%;
+            }
+        </style>
+        
+        <!-- file.css to style C++ courses
+             management scene -->
+        <style>
+            .course {
+                background-color: rgb(161, 117, 30, 0.5);
+                margin-left: 10%;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                width: 80%;
+                padding: 0px;
+                display: inline-flex;
+            }
+            .course h3 {
+                width: 70%;
+                font-size: 25px;
+            }
+            .percentNum {
+                margin-top: 18px;
+                margin-left: 0px;
+                font-size: 30px;
+            }
+            .seeContent {
+                margin: 10px 10px 10px 10px;
+                font-size: 55px;
+            }
+            .seeContent:hover {
+                cursor: pointer;
+            }
+            
+            #courseArticleList {
+                background-color: rgb(209, 204, 170);
+                position: fixed;
+                left: 5%;
+                width: 90%;
+                top: 100px;
+                z-index: 10;
+            }
+            #courseTitle {
+                text-align: center;
+                font-size: 45px;
+                margin-top: 0px;
+                margin-bottom: 15px;
+                padding: 5px 4% 5px 2%;
+                box-shadow: 0px 5px 5px 0px rgb(46, 34, 6, 0.2);
+            }
+            #closeCourseContent {
+                position: absolute;
+                left: 90%;
+                top: 10px;
+                font-size: 45px;
+                box-shadow: 0px 0px 0px 0px rgb(46, 34, 6, 0.2);
+            }
+            #closeCourseContent:hover {
+                cursor: pointer;
+                transition: box-shadow 0.2s ease-in-out;
+                box-shadow: 0px 5px 35px 0px rgb(46, 34, 6, 0.2);
+            }
+            .article {
+                background-color: rgb(212, 190, 130, 0.2);
+                max-width: 100%;
+                height: 25px;
+                margin: 0px;
+                padding: 3px 0px 3px 10px;
+                color: black;
+                border: 1px solid rgb(0, 0, 0, 0.05);
+            }
+            .article h3 {
+                font-size: 13px;
+                margin-left: 10%;
+                margin-top: 4px;
+                
+            }
+            .article span {
+                float: left;
+                margin: 0px;
+            }
+            .article:hover {
+                background-color: rgb(179, 158, 104, 0.3);
+            }
+            
+            
+            .checkUnfinished {
+                color: rgb(0, 0, 0, 0.2);
+            }
+            .checkFinished {
+                color: rgb(0, 0, 0);
+            }
+        </style>
+        
+        <!-- file.css to style C++ articles -->
+        <style>
+            .ART {
+                background-color: rgb(168, 165, 156, 0.5);
+                margin-left: 6%;
+                margin-bottom: 25px;
+                width: 79%;
+                padding: 4%;
+            }
+            .artTitle {
+                margin: 10px 5px 40px 30px;
+                text-align: center;
+                width: 425px;
+            }
+            .sectionTitle {
+                margin: 10px;
+                padding-left: 18px;
+                padding-top: 7px;
+                padding-bottom: 5px;
+                font-size: 15px;
+                border-left: black 2px solid;
+                border-top: black 2px solid;
+                border-radius: 25px 0px 25px 0px;
+                background-color: rgb(140, 137, 127);
+            }
+            .s2Title {
+                margin: 15px;
+                
+            }
+            
+            .quote {
+                background-color: rgb(0, 0, 0, 0.5);
+                margin: 25px;
+                padding: 10px 13px 10px 10px;
+            }
+            .quote h6 {
+                color: white;
+                text-align: center;
+                font-size: 20px;
+                margin: 10px;
+            }
+            .quote p {
+                color: white;
+                text-align: center;
+            }
+            #bCourse {
+                position: absolute;
+                left: 9%;
+                top: 238px;
+                width: 18px;
+                height: 18px;
+                transition: background-color 0.2s ease-in-out;
+                background-color: rgb(105, 68, 12, 0.2);
+                border-radius: 12px;
+                padding: 12px;
+                font-size: 20px;
+                transform: scale(1.5);
+            }
+            #bCourse:hover {
+                cursor: pointer;
+                transition: background-color 0.2s ease-in-out;
+                background-color: rgb(105, 68, 12, 0.6);
+            }
+            #bCourse span {
+                pointer-events: none;
+            }
+            
+            #clearProgress {
+                position: absolute;
+                right: 10%;
+                top: 100px;
+                width: 125px;
+                height: 35px;
+                background-color: rgb(227, 120, 32);
+                border: none;
+                border-radius: 3px;
+                z-index: 2;
+            }
+            #clearProgress:hover {
+                cursor: pointer;
+                box-shadow: 2px 2px rgb(173, 116, 24);
+            }
+        </style>
+        
+        <!-- file.css to style C++ code -->
+        <style>
+            .code {
+                background-color: rgb(51, 51, 51);
+                color: white;
+                margin: 20px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                padding: 10px;
+                overflow: auto;
+            }
+            
+            .red {
+                color: rgb(245, 35, 35);
+            }
+            .orange {
+                color: rgb(250, 94, 3);
+            }
+            .blue {
+                color: rgb(43, 134, 230);
+            }
+            .green *, .green {
+                color: rgb(48, 191, 91);
+            }
+        </style>
+        
+        <!-- file.css to style member page -->
+        <style>
+            .member {
+                background-color: white;
+                position: relative;
+                width: 44%;
+                height: 100px;
+                border: 2px solid black;
+                box-shadow: 0px 1px 20px 0px rgb(46, 34, 6);
+                display: inline-block;
+                margin: 25px 0% 25px 4%;
+            }
+            .member img {
+                float: left;
+                width: 65px;
+                margin: 10px;
+                margin-bottom: 5px;
+            }
+            .member h3 {
+                font-size: 18px;
+                margin-top: 10px;
+                padding-right: 15px;
+            }
+            .member p {
+                margin: 0px;
+                padding: 1px;
+                padding-left: 5%;
+                background-color: rgb(158, 158, 158, 0.5);
+                text-align: center;
+                position: absolute;
+                width: 95%;
+                bottom: 0;
+            }
+        </style>
+        
+        <!-- file.css to style profile page -->
+        <style>
+            #userBox {
+                margin-left: 5%;
+                width: 90%;
+                min-height: 400px;
+                background-color: white;
+                box-shadow: 0px 1px 20px 0px rgb(46, 34, 6);
+                display: flex;
+            }
+            #userBox div {
+                width: 100%;
+            }
+            
+            #userBox h3 {
+                text-align: center;
+                font-size: 40px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: -10px;
+                padding: 25px;
+                margin-bottom: 10px;
+                border-bottom: 2px solid black;
+                padding-bottom: 0px;
+            }
+            #userBox h4 {
+                text-align: center;
+            }
+            #userBox img {
+                margin: 0px;
+                margin-left: 25%;
+                width: 50%;
+            }
+            #userBox #yourcourses {
+                background-color: rgb(143, 113, 57, 0.3);
+                padding: 0px;
+            }
+            #yourcourses h4 {
+                background-color: rgb(0, 0, 0, 0.4);
+                margin-top: 0px;
+                padding: 15px;
+            }
+            #editProfile {
+                position: absolute;
+                bottom: 26px;
+                left: 330px;
+                color: rgb(20, 82, 227);
+            }
+            #editProfile:hover {
+                cursor: pointer;
+                color: rgb(95, 130, 207);
+            }
+            
+            .profileCourse {
+                background-color: rgb(255, 255, 255, 0.5);
+                padding: 10px;
+            }
+            .profileCourse:hover {
+                background-color: rgb(255, 255, 255, 0.7);
+                cursor: pointer;
+            }
+            .profileCourse h5 {
+                font-size: 20px;
+                margin: 0px;
+            }
+            #noCourses {
+                color: rgb(199, 144, 99);
+                font-style: italic;
+            }
+            
+            #editProfilePage {
+                background-color: rgb(255, 255, 255);
+                border-radius: 25px;
+                box-shadow: 0px 0px 20px 5px black;
+                position: fixed;
+                left: 10%;
+                width: 70%;
+                top: 100px;
+                height: 400px;
+                padding: 5%;
+            }
+            #editProfilePage div {
+                margin: 0px;
+                margin-right: 25px;
+                width: 150px;
+                display: inline-block;
+            }
+            #editProfilePage h3 {
+                margin: 0px;
+            }
+            #editProfilePage p {
+                margin-bottom: 3px;
+                margin-left: 0px;
+            }
+            #saveSettings {
+                position: absolute;
+                left: 5%;
+                bottom: 20px;
+                padding: 10px;
+                font-size: 15px;
+                width: 90%;
+                border: 2px solid black;
+                background-color: rgb(57, 209, 34);
+                transition: border-radius 0.4s ease-out;
+                border-radius: 0px;
+            }
+            #leaveSettings {
+                position: absolute;
+                left: 5%;
+                bottom: 70px;
+                padding: 10px;
+                font-size: 15px;
+                width: 90%;
+                border: 2px solid black;
+                transition: border-radius 0.4s ease-out;
+                border-radius: 0px;
+            }
+            #saveSettings:hover {
+                cursor: pointer;
+                transition: border-radius 0.2s ease-out;
+                border-radius: 15px;
+            }
+            #leaveSettings:hover {
+                cursor: pointer;
+                transition: border-radius 0.2s ease-out;
+                border-radius: 15px;
+            }
+        </style>
+        
+        <!-- file.css to style the coding page -->
+        <style>
+              .cHeader {
+                  margin-left: 10%;
+                  font-size: 20px;
+                  margin-bottom: 5px;
+              }
+              
+              .projectContainer {
+                  width: 80%;
+                  height: 175px;
+                  background-color: rgb(153, 153, 153);
+                  margin: 0px 0px 0px 9%;
+                  overflow-x: scroll;
+                  overflow-y: hidden;
+                  white-space: nowrap;
+                  overflow-x: hidden; /* Hide horizontal scrollbar */
+              }
+              
+              .project {
+                  background-color: rgb(184, 175, 184);
+                  width: 175px;
+                  height: 166px;
+                  border: 2px solid black;
+                  margin: 2px;
+                  display: inline-block;
+              }
+              
+              #noContests {
+                  color: rgb(255, 255, 255);
+                  font-weight: bold;
+                  font-style: italic;
+                  margin-top: 130px;
+                  margin-left: 15px;
+              }
+              
+              .project h5 {
+                  text-align: center;
+                  width: 100%;
+                  margin: 0px;
+                  margin-bottom: 15px;
+                  padding: 10px 0px 10px 0px;
+                  background-color: rgb(168, 163, 168);
+              }
+              .project p {
+                  height: 85px;
+                  margin-top: -10px;
+              }
+             .levelOfProject {
+                  float: left;
+                  margin-left: 10px;
+                  
+              }
+              
+              .goToProject {
+                  color: rgb(53, 184, 69);
+                  float: right;
+                  margin-right: 15px;
+                  transition: margin-right 0.4s ease-in-out, color 0.4s ease-in-out;
+              }
+              .goToProject:hover {
+                  color: rgb(68, 207, 29);
+                  margin-right: 10px;
+                  transition: margin-right 0.4s ease-in-out, color 0.4s ease-in-out;
+                  cursor: pointer;
+              }
+              
+              #returnToProjects {
+                  background-color: rgb(153, 151, 153);
+                  padding: 10px;
+                  border: 2px solid black;
+                  margin-left: 50px;
+                  width: 200px;
+              }
+              #copyCode {
+                  background-color: rgb(63, 204, 16);
+                  padding: 10px;
+                  width: 200px;
+                  border: 2px solid black;
+              }
+              #returnToProjects:hover {
+                  cursor: pointer;
+                  background-color: rgb(191, 191, 191);
+              }
+              #copyCode:hover {
+                  cursor: pointer;
+                  background-color: rgb(98, 219, 17);
+              }
+        </style>
+        
+        <!-- file.css to style the tables -->
+        <style>
+            .tTable {
+                background-color: white;
+                width: 100%;
+                margin: 0px -2% 0px -2%;
+                padding: 2px;
+                font-size: 15px;
+            }
+            thead {
+                background-color: rgb(143, 90, 37);
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 5px;
+            }
+        </style>
+    </head>
+    
+    <!-- Holds the main HTML content of this webpage document -->
+    <body>
+        <!-- Header of the webpage -->
+        <header>
+            <h1>COPRAM</h1>
+        </header>
+        
+        <!-- Sidebar -->
+        <nav class="close" id="sidebar">
+            <a href="javascript:switchPage('home-page');" title="Home"><button id="home-pageButton"><span class="material-icons">home</span></button></a>
+                <a href="javascript:switchPage('profile-page');" title="Profile"><button id="profile-pageButton"><span class="material-icons">account_circle</span></button></a>
+                <a href="javascript:switchPage('learn-page');" title="Learn"><button class="navButton" id="learn-pageButton"><span class="material-icons">article</span></button></a>
+                <a href="javascript:switchPage('coding-page');" title="Coding"><button id="coding-pageButton"><span class="material-icons">
+code</span></button></a>
+            <span id="hoverOpen" class="material-icons">drag_indicator</span>
+        </nav>
+        
+        <!-- Main content of the webpage -->
+        <main>
+            <!-- Section: Menu page -->
+            <section id="home-page" class="page">
+                <h1 class="page-title">Home</h1>
+                <p>Welcome to COPRAM! This is a website all about learning programming and C++! You might know me as Iron Programming on KA, and my goal for this website is to build a subcommunity on KA whose goal is to learn C++. 
+                <br><br>On this website we will be discovering programming from the perspective of C++. This will cover some of the material that you would find in a standard Programming I class in college. Although I am the primary teacher, if you have any expertise in programming or C++ and want to help supervise this project please let me know in the T&T on this program!<br><br>You can visit your profile on COPRAM to check out your progress learning C++. More specialization will be coming to the profile page soon!<br><br>The learning page will contain articles that teach you how to code C++. You will follow along in one of the online or desktop apps that I list.<br><br>Check out the coding challenges page to see C++ coding challenges! Some of these will be contests that I release, and some of them will be personal challenges given in a tutorial-like style to help you progress in your C++ coding career!</p>
+            </section>
+            
+            <!-- Section: Profile -->
+            <section id="profile-page" class="page">
+                <h1 class="page-title">Profile</h1>
+                
+                <div id="userBox">
+                    <div id="yourcourses">
+                        <h4>Your Courses</h4>
+                        
+                        <div id="profileCourseList">
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h3 id="displayName">New User</h3>
+                        <img id="userAvatar" src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/questionmark.png">
+                        
+                        <p onclick="fadeIn(document.getElementById('editProfilePage'))" id="editProfile">Edit your Profile</p>
+                    </div>
+                </div>
+                
+                <div id="editProfilePage">
+                    <h3>Personalize your Profile</h3>
+                    
+                    <div>
+                        <p>Display Name</p>
+                        <input id="editDisplayName" value="New User">
+                    </div>
+                    
+                    <div>
+                        <p>Choose your Avatar</p>
+                        <select name="levelBox" id="chooseAvatar">
+                        <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/questionmark.png" class="available">None<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/questionmark.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/aqualine-ultimate.png" class="available">Aqualine<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/aqualine-ultimate.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/duskpin-ultimate.png" class="available">Duskpin<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/duskpin-ultimate.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/leafers-ultimate.png" class="available">Leafers<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/leafers-ultimate.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/piceratops-ultimate.png" class="available">Piceratops<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/piceratops-ultimate.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/primosaur-ultimate.png" class="available">Primosaur<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/primosaur-ultimate.png"></option>
+                          <option value="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/starky-ultimate.png" class="available">Starky<img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/starky-ultimate.png"></option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="fadeOut(document.getElementById('editProfilePage'));" id="leaveSettings">Cancel</button>
+                    <button onclick="saveSettings()" id="saveSettings">Save</button>
+                </div>
+            </section>
+            
+            <!-- Section: Learning & Skills page -->
+            <section id="learn-page" class="page">
+                <h1 class="page-title">C++ Courses</h1>
+                <p>These C++ courses are short tutorial series designed to help you advance your C++ knowledge.</p>
+                
+                <!-- List of courses -->
+                <div id="courses">
+                    <!-- Intro to C++ -->
+                    <div class="course">
+                        
+                        <span class="material-icons seeContent">view_list</span>
+                        <h3>Intro to C++.</h3>
+                        <span class="percentNum">? %</span>
+                    </div>
+                    
+                    <!-- C++ Syntax and Semantics -->
+                    <div class="course">
+                        
+                        <span class="material-icons seeContent">view_list</span>
+                        <h3>C++ Syntax & Semantics</h3>
+                        <span class="percentNum">? %</span>
+                    </div>
+                    
+                    <!-- Input and Output Stream
+                    <div class="course">
+                        <span class="material-icons seeContent">view_list</span>
+                        <h3>Input and Output Streams</h3>
+                        <span class="percentNum">? %</span>
+                    </div>-->
+                </div>
+                
+                <!-- Course Article List -->
+                <div id="courseArticleList">
+                    <h2 id="courseTitle">Intro to C++</h2>
+                    
+                    <div id="articlesContainer"></div>
+                    
+                    <span id="closeCourseContent" onclick="closeCourseContent()" class="material-icons">close</span>
+                </div>
+                
+                <!-- Display current article -->
+                <div id="currentArticle">
+                    <!-- Intro to C++ Articles -->
+                    <div>
+<div class="ART hide" id="/introToC++/art1">
+    <h2 class="artTitle">What is programming?</h2>
+    <h4 class="sectionTitle">Introduction - Computers and Programs</h4>
+    <p>Welcome to programming with the C++ language! Before we go on to study this specific language, C++, we need to get a little bit of a computer background, so let's get started!</p>
+    <p>A computer is a device that makes computations--that is, it performs mathematical calculations. An defining characteristic of a computer is that it is <em>programmable</em>.<br><br>When we give instructions to a computer, we are programming it. Modern computers are assigned sets of instructions, called programs, which they execute. When given programs to execute, computers can execute them automatically without human assistance. This is what makes computers so powerful: we can tell our computers to do something, and they will always do what we say!<br><br>At the same time, translating our ideas into a program requires knowledge of how to convert our ideas into a programming language. Many times, we know exactly what we <em>want</em> the computer to do, but we struggle on how to tell it so. If you ask any programmer, they will tell you that <strong>debugging</strong>, the process of resolving errors, takes up the majority of the time of programming. We will take a look at debugging and troubleshooting later.</p>
+    <p>There is a fun little poem that describes this situation.</p>
+    <div class="quote">
+        <h6>A programmer's poem</h6>
+        <p>I hate this machine<br>I think I will sell it<br>It never does what I want<br>Just what I tell it</p>
+        <p>- Unknown</p>
+    </div>
+    <p>Of course, we don't need to be saying hate, but the quote is pretty humorous.</p>
+    <h4 class="sectionTitle">Writing Programs</h4>
+    <p>To write a program, we must go be able to convert an idea in our head to concrete code. Before we can do that, we must better understand what it is that we want our code to do. There are a couple <strong><em>programming models</em></strong> that programmers use. The two most common are the <strong>waterfall model</strong> and the <strong>spiral model</strong>. We will look at programming from the perspective of the waterfall method.<br><br>In the waterfall method, there are two general phases. The first phase is the planning or problem-solving phase, and the second phase is implementating that refined idea into a concrete solution (program).<br></p>
+    <h5 class="s2Title">Problem-Solving Phase (Planning Phase)</h5>
+    <p>The problem-solving phase can be understood as a loop. We continue our planning for each aspect of our project until we have enough planned to continue on to implementing our solution.</p>
+    <ul>
+        <li>Analyze and Specify &#8594; The first step of problem solving is to analyze the situation, so that we can define the problem, and specify what we must do to accomplish our goal.</li>
+        <li>Create a General Algorithm &#8594; After we understand what we seek to accomplish, we must develop a general solution (algorithm) to meet this goal. Many times, we will use <strong>pseudo-code</strong> to help use think more in terms of programming, without getting language specific.</li>
+        <li>Verify &#8594; Before we convert our algorithm into code, we should verify our logic to make sure we don't have any flaws. Always expect the unexpected!</li>
+    </ul>
+    <h5 class="s2Title">Implementation Phase</h5>
+    <p>Once we have verified what our algorithm is, we must convert this "idea" into code, creating a program. This can be thought of in two steps: (1.) translating the algorithm into a <em>programming language</em>, and (2.) testing the program.</p>
+    <p>After we initially develop a program, a burden may seem to lift off your back. But... you aren't done yet. Depending on the purpose of the program, it may require a little or a lot of <strong>maintenance</strong>. Maintenance can be considered a third phase of programming, and can be really important in some situations. In some cases, it can be as simple as fixing glitches in a game that your viewers find. In other cases, you may be updating software to stay up to date with operating systems, or maybe changing it to make it compatible with new apps.<br>Later we will look a little more at algorithms and how we use them in various ways.</p>
+    <h4 class="sectionTitle">Programming Languages</h4>
+    <p>We just described the basic process of how programmers go about coding. But as we noted, we must use a programming language to instruct the computer, because the computer cannot understand human, real-life languages. While there are various forms of computer languages, for now we will only focus on programming languages.</p>
+    <ul><li><strong>Programming Language</strong> &#8594; A group of rules and characters that are used to construct a computer program.</li></ul>
+    <p>We describe programming languages by talking about their syntax and semantics. We will look more into this later.</p>
+    <h5 class="s2Title">Levels of Programming Languages</h5>
+    <p>Now, there are various <em>levels</em> of programming. Originally, the only programming languages that existed were the ones built into the computers, called <strong>machine languages</strong>. These languages were the primitive instruction sets built directly into the computers. As we learn in Computer Science and other IT related courses, computers operate on binary. So machine language was written in binary. This made programming very cumbersome and prone to error.<br>But over time, programmers developed a system that was a lot easier to work in. They developed <strong>assembly languages</strong>. These languages could not be directly by the computer, so a special program called an <strong>assembler</strong> was used to run it. Assembly languages used small words or mnemonic phrases to help make programming slightly more human friendly. Now an assembly language is still considered a very <em>low-level</em> programming language. We call programming languages that are "closer" to how the machine operates (on binary) low-level programming languages, and more human-friendly languages <em>high-level</em>.<br><br>So because assembly languages are still not very useful friendly, programmers developed high-level languages like <strong>C</strong>. These languages use a <strong>compiler</strong> to convert the high-level code directly into machine code. We call a program written in a high-level language a <strong>source program</strong>, and the program that is actually executed by the computer a <strong>object program</strong>This means that the compiler translates the source program into the object program, which is then executed by the computer.<br><br>The benefits of using a high level language include:</p>
+    <ul>
+        <li>Readability - more human friendly, and less prone to errors.</li>
+        <li>Portability- we can write <em>machine-independent</em> code.</li>
+        <li>Compatibility - it is easier to write programs that are compatible with other programs/software.</li>
+    </ul>
+    <p>Before we leave this section, it is probably worth noting the different types of instructions that we write in programming languages, because we will reference this later.</p>
+    <ul>
+        <li>Take input data from an input device (keyboard, mouse, etc) and output data to an output device (monitor, headphones, etc).</li>
+        <li>Store and retrieve data into/from computer memory (primary or secondary).</li>
+        <li>Transfer data from one place to another.</li>
+        <li>Compare two data values (equality/inequality).</li>
+        <li>Perform arithmetic operations (we'll look at these in more depth later).</li>
+    </ul>
+    <p>As we continue studying programming languages in general, and C++ specifically, we will see how all programming <em>statements</em> fall into these categories.<br><br>Phew! So that is your introduction to programming langues! Don't worry if you don't understand all of it, we will continue building on our understanding of everything, and you can always come back later if you want to review something. Even so, we only scratched the surface of how computers actually deal with programming languages, and how programming languages are used by humans. Anyway, there is only one place to go on from here, <strong>ONWARDS!</strong></p>
+</div>
+<div class="ART hide" id="/introToC++/art2">
+    <h2 class="artTitle">Setting up your coding environment.</h2>
+    <h4 class="sectionTitle">Code Editors</h4>
+    <p>Before we go any further, you should setup your coding environment and other tools that we will use throughout the course.<br>The first tool we will need to have is a <em>coding editor</em>.</p>
+    <ul><li><strong>Coding Editor</strong> &#8594; An interactive program that lets users create and modify source programs.</li></ul>
+    <p>Coding editors are similar to word processors (like Google Doc or Microsoft Word) in that they receive strings of typed data from the user. The biggest difference is that word processors only store data, while coding editors are built to process the data, and output the results, as well as report any errors that occurred in running the code.<br>Coding editors come with many features, including the ones listed below.</p>
+    <ul>
+        <li>Syntax Highlighting: Most coding editors highlight key words or phrases, depending on their usage in the programming language.</li>
+        <li>Indention: Because code format and indention is such an important part of being a professional programmer, most coding editors help with this by auto-indenting.</li>
+        <li>Auto-completion of Code: Coding editors will often auto-complete or give suggestions to complete a statement. Brackets, parenthesis, and quotation marks are often auto-completed, while if the computer detects you typing a keyword a suggestion might pop up above.</li>
+    </ul>
+    <p>Enough talking about coding editors, lets get one setup!</p>
+    <h4 class="sectionTitle">Visual Studio</h4>
+    <p>Microsoft's Visual Studio (VS) is one of the most widely used coding editors out there. It allows you to program in a wide variety of languages, both web based like JavaScript, and many others like C++ and Python. To get started with visual studio, please follow the steps below.</p>
+    <p><strong>NOTE: You must have a desktop interface on your computer to install VS (as well as any other coding editor)! If you do not, then unfortunately you will not be able to code in C++, at least not in the real way it was meant to be used. Please come back later when you have a desktop interface!</strong></p>
+    <ol>
+        <li>Go to <a href="https://visualstudio.microsoft.com/" target="_blank">Microsoft's Visual Studio page</a>.</li>
+        <li>You should see 3 versions of VS: one for Windows (simply called VS), one for Mac (VS for Mac), and one that works on any operating system (VS Code). You may choose any of the options you would like. I will be using VS Code on a Mac, as well as an older version of VisualStudio on Windows for myself.</li>
+        <li>Once you have downloaded the version, continue to install your version of VisualStudio. Make sure to accept any requests that the program asks you for permission (such as accessing files on your desktop).</li>
+        <li>Once you have the program installed, find it on your device. It could be on your desktop, in your documents folder, or somewhere else. You can use the searching feature found in your device to search for the program (command-space on Mac). Once your program installed and the icon is on your desktop, you <strong>should restart</strong> before continuing setting up VS.</li>
+        <li>There are many useful videos on YouTube and other video platforms which teach you how to setup VS. Here is one nice (100% clean) video on <a href="https://youtu.be/77v-Poud_io" target="_blank">getting started in VS Studio</a>. Most programs also have a small tutorial for getting started as well.</li>
+        <li>Note that in the video above, he installs the C++/C program, and then creates a file.c program. At this step, you could create a file.c++ instead (usually written as file.cpp).</li>
+        <li>Finally, once you have a file.cpp file, you need to put in some basic C++ code, shown at the end of this list (copy & paste it).</li>
+        <li>This whole process can be quite a hastle. If you run into any errors along the way, feel free to ask questions on KA, or troubleshoot online, or ask someone around you that is tech-savvy.</li>
+    </ol>
+    <pre class="code">
+// HelloWorld.cpp
+
+#include &lt;iostream>
+
+int main()
+{
+    std::cout &lt;&lt; "HelloWorld!";
+    
+    return (0);
+}
+    </pre>
+    <p>Make sure that you play around in your code editor and learn how to use it. To start, learn how to run and save the program. Many times there are various ways to do this. Most likely you can press ctrl-s or command-s on a Mac to save the program. To run the program, there should be a play button in VS Studio, but you can also right click and click <em>Run Code</em>. Additionally, there is likely to be a shortcut to running your code as well.</p>
+    <ul><li><strong>IMPORTANT: Some programs (coding editors) save or build automatically, and some require that you do these things manually. Get into a habit of saving often, and make sure you know how to "build" the code before running it. For example, in the VS Studio version that I am using, I must save (command-s) to build the solution. Once the solution is built, I can run it with the updates.</strong></li></ul>
+    <h4 class="sectionTitle">Running Code in Terminal</h4>
+    <p>Depending on what coding editor you are using, you may or may not be running the code in the terminal or not. In VS Code, it runs it in the output by default, which is a read-only format, which doesn't let us input any values. To fix this, we will need to change our <em>settings</em> in VS Code. Please follow along this <a target="_blank" href="https://youtu.be/Si8rN5J249M?t=145">YouTube video</a> to install the Code Runner extension, which allows you to change your preferences > settings to run in the terminal.<br>Try running the following program to verify that your input is working.</p>
+    <pre class="code">
+// WhatIsYourName.cpp 
+
+#include &lt;iostream>
+#include &lt;string>
+
+using namespace std;
+
+int main()
+{
+    string name;
+    cout &lt;&lt; "What is your name? ";
+    cin >> name;
+    cout &lt;&lt; "Welcome, " &lt;&lt; name &lt;&lt; ".";
+
+    return (0);
+}
+    </pre>
+    <p>Make sure you know how to run a C++ console program! A console program is a simple, text-based program. In order to take input from the computer, we must run our console programs in the terminal, as shown above. To give input, you will click in the terminal and type. In our example, after the program runs and outputs "What is your name? ", you would then answer, typing YourName. The program should then output saying "Welcome, YourName."</p>
+    <ul><li><strong>Note: You may want to look into "prettifying" your coding terminal.</strong></li></ul>
+    <h4 class="sectionTitle">Miscellaneous Tools</h4>
+    <p>Besides your standard coding editor, there are a couple other applications you might want to use. First we have <a href="https://www.tutorialspoint.com/codingground.htm" target="_blank">an online coding editor</a>, which is really more of a coding simulation. As far as I'm aware, online coding editors don't allow you to take input from the user, so these type of editors are really just useful if you want to test some C++ code when you don't have access to your coding computer, and you want to code something really quick and test it on your laptop or whatever.<br><br>The next tool I'd recommend is much more well-known and used, and that is <a href="https://notepad-plus-plus.org/downloads/v8.1.4/" target="_blank">Notepad++</a>. Notepad++ is a great complement to other coding editors. When we learn more about files and how to use them in coding we'll probably end up using Notepad++ to do that (although it is not required).<br><br>The last resource I'd recommend getting familiar with is <a href="https://github.com/" target="_blank">Github</a>. Github is well-known and used worldwide for all types of coding projects. Github is especially helpful if you are working as a team with others (collaborations).<br><br>Anyway, those are the main tools I'd recommend as of right now! As both you and I continue in our C++ coding journey, I am sure we will find more useful tools along the way, so let's keep coding!</p>
+</div>
+<div class="ART hide" id="/introToC++/art3">
+    <h2 class="artTitle">Syntax and Semantics.</h2>
+    <p>Both programming and real-life languages follow a set of rules which dictate how we use them. When discussing how languages work, we typically talk about their <strong>syntax</strong>, which is the actual structure or grammar of the languages, and <strong>semantics</strong>, which is the meaning of a "word or phrase."<br>Now, as we study languages, or programming languages in particular, we will special language that we use to talk about languages. To help us make specifications about a particular language's syntax, we use what is called a <strong>metalanguage</strong>.<br>NOTE: I might use SyntaxTemplates or SyntaxDiagrams to teach the C++ syntax, but I will probably not use them much because in my opinion they aren't needed all that much.</p>
+    <h2 class="sectionTitle">Syntax Templates</h2>
+    <p>Syntax templates are one type of metalanguage that uses graphic conventions with symbols and words to depict the syntax of a programming language. We use boldface characters to depict a literal word/C++ phrase, and non-bold characters/words can be defined using their own SyntaxTemplate.</p>
+    <h2 class="sectionTitle">Syntax Diagrams</h2>
+    <p>Syntax diagrams are basically diagrams that show the syntax of a programming language. There are a variety of types of syntax diagrams that we can use. From the way that I see these terms used, SyntaxDiagram is a broader term encompassing many metalanguages, while SyntaxTemplates are a specific type of SyntaxDiagrams.<br>Look at the examples of syntax templates below to get a general idea of how they are used.</p>
+    <p style="margin-left:-10px"><a href="https://commons.wikimedia.org/wiki/File:Syntax-diagram-example.png#/media/File:Syntax-diagram-example.png"><img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Syntax-diagram-example.png" alt="&quot;Railroad&quot; syntax diagram"></a></p>
+    <p style="margin-top: -40px; margin-bottom: 40px;">Image by <a target="_blank" href="https://commons.wikimedia.org/w/index.php?title=User:Gregg-Irwin&action=edit&redlink=1">Gregg-Irwin</a><br><a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=99294579">Link</a></p>
+    <h2 class="sectionTitle">Basic Syntax</h2>
+    <p>There are 4 basic structures for expressing actions in a programming language: sequence, selection, loop, and subprogram.</p>
+    <ul>
+        <li><strong>Sequence</strong> &#8594; A sequence is just what you think it is - a group of statements executed in consecutive order.</li>
+        <li><strong>Selection</strong> &#8594; Selection is when the true logic comes into play. In a selection statement, the computer looks at some boolean expression, and depending on the result (true/false) it will do execute one group or statements or another group of statements. We often call such a statement a <strong>conditional statement</strong></li>
+        <li><strong>Loop</strong> &#8594; A loop statement is a statement that the computer repeats, possibly tweaking along the way, until a certain condition is meant. Once complete, the computer moves on to following group of statements (in the overall sequence of things).</li>
+        <li><strong>Subprogram</strong> &#8594; Like in all tasks, it is often useful to break up large tasks or programs into smaller tasks or subprograms. A subprogram is a block of code that is executed in sequence. Once the subprogram is completed, execution is returned to the rest of the normal sequence. Note that in most programming languages subprograms are called <strong>functions</strong></li>
+    </ul>
+    <p>If we consider a simple program, it will be a sequence, a list of consecutive statements. Speaking of which, it would be useful to define what exactly a "statement" is in a programming language. In machine-language, each statement tells the computer to do exactly one thing, such as adding two quantities, or storing that result into a memory location. As our programming languages get higher, each statement is actually doing a handful of actions. Whenever we write <em>const int sum = A + B;</em> in C++, the computer is doing several actions, such as adding A and B, storing that result in a specified memory location, and storing the name ('sum') in a special memory location as well.<br><br>So that is the basics of syntax and semantics. We focused mainly on syntax and the overall layout of a program, as well as tools such as SyntaxTemplates, because semantics is more language-specific. As we begin our study of C++ specifically, we will begin to look more into the semantics, as well as the specific syntax using metalanguages to help us.</p>
+</div>
+<div class="ART hide" id="/introToC++/art4">
+    <h2 class="artTitle">Introduction to Algorithms.</h2>
+    <p>As we saw when looking at the syntax of programming languages, a computer program is essentially just a sequence of computer statements. Of course, when we begin to write more complicated programs we will use more complicated structures within that overall structure, such as subrpograms and conditionals, but when it comes down to it we are always dealing with a sequence of steps to accomplish our goal.<br><br>Whenever we write computer programs, we are following a specific algorithm. Computer programs are basically algorithms applied to a computer, as in their definitions below.</p>
+    <ul>
+        <li><strong>Algorithm</strong> &#8594; Algorithms are a step-by-step process that is designed to accomplish a goal in a finite amount of time.</li>
+        <li><strong>Computer Program</strong> &#8594; A sequence of instructions written to be executed by a computer.</li>
+    </ul>
+    <p>We create algorithms all the type for all sorts of projects--anytime we need to get a complicated task done, we need to break up the task in a set of steps designed to be done in order (an algorithm). In the problem-solving phase of programming, we plan out how we want to make our program to look. Although it can be tempting to simply jump into programming, it will definitely save you time if you write down a methodical process before trying to code. Also, note how an algorithm is desinged to complete some objective, not just work away at a task forever.<br><br>Many times programming teachers will intoduce programming by asking their students to create an algorithm to do some simple task, like tying a shoe or making a PBJ. The reason they do this is because as humans learn we are constantly combining simple tasks to form more complicated tasks, forming aggregate tasks. Then, once we've learned how to do these complicated tasks, we often make assumptions on how to do that task because we are so used to do it in one swift action. For example, once you learn how to type, if you think "type 'the'", then your fingers simply type the corresponding characters, without you needing to look where the correct keys are, and how to move your fingers there. You have learned from past experience (often termed 'mucsle memory') how to do these tasks.<br><br>So in programming, we will need to stop thinking in terms of "aggregate algorithms", and really think about how complete a task, one step at a time.</p>
+</div>
+<div class="ART hide" id="/introToC++/art5">
+    <h2 class="artTitle">History of Programming & C++.</h2>
+    <p>In this section I just want to go over a brief history of programming and then how C++ evolved from the previous programming languages.</p>
+    <h4 class="sectionTitle">The birth of high-level languages</h4>
+    <p>John Backus developed the first high-level programming which was called Fortran, which stands for FORmula TRANslator, its full title being <em>The IBM Formual Translating System</em>. Fortran introduced many new ideas such as arithmetic operations, comments, IF statements, and the DO loop (analogous to the FOR loop used in programming languages to day). Although it seems so easy now, the problem to convert high-level expressions (A = (B + 2)/4) into machine code was a huge task.<br>NOTE: International Business Machines Corporation (IBM) is known as being one of the best computer-related companies. One of their achievements is creating Fortran, as discussed here.<br><br>Still, Fortran was designed to work on IBM computers, and it still wasn't all that compatible with all computers in general. To fix this, the Committee on Data Systems Languages was formed, advised by Grace Hopper, to help develop a "common" programming language that could be used across multiple computers. In response, the Common Business-Oriented Language (COBOL) was formed. Although Grace Hopper did contribute to the creation of COBOL, the real credit goes to Mary Hawes who came up with the general idea. But with the creation of COBOL, we could finally write software once and use it on any computer (assuming the computer had a COBOL compiler), a notion called "Write Once, Run Anywhere."</p>
+    <ul><li>Originally (even on these high-level progrmaming languages), computers were programmed on literal punch cards.</li></ul>
+    <p>After the creation of of the giants FORTRAN and COBOL, other programming languages were developed to follow a more specific, precise syntax. Such languages included Algol 60 and its successor, Pascal. One of the reason Pascal was created was because Algol 60 was primarily built for mathematical operations.</p>
+    <h4 class="sectionTitle">Origins of C++</h4>
+    <p>Many of the worlds most popular languages (C, C++, C#, Java, etc) all have roots from C. C was so-named because it came from a programming language called B, which was derived from the Basic Combined Programming Language (BCPL). Dennis Ritchie was the author of the C programming language, which he created while he was at AT&T Bell Labs. C was initially created to run on the UNIX operating system (not the exact same thing as LINUX), although it has since been integrated into all the major operating systems.<br><br>Now, in 1985, Bjarne Stroustrup (from Bell Labs as well) created the C++ language. The "++" is an increment operator found in many high-level languages, and thus C++ is basically an upgraded version of C. As Stroustrup wanted a flexible/dynamic language like C, but also with additional features that encompassed Object-Oriented-Programming features, he created C with Classes. </p>
+    <ul><li>NOTE: C with Classes was renamed C++ in 1983.</li></ul>
+    <p>One of the most notable features in C++ is its use of Object-Oriented-Programming (OOP). Although Object-Oriented-Design (OOD) is not required in programming, many programmers use it for all types of projects. There is actually some debate on whether OOD or vanilla functions are better, but each of them certainly have their places.<br>Anyway, that is the basic history of C++ and programming languages in general. One thing to keep in mind is that as C++ evolved, the changes were not always universal (so there was not always standard compatibility to go around). To fix this, the International Standards Organization (ISO) and the American National Standards Institute (ANSI) began creating a C++ standard. Finally, in 1998, the ISO/ANSI language standard for C++ was finalized, now simply called <em>standard C++</em>. So <em>that</em> is the C++ standardized, high-level, programming language that we will be coding in.</p>
+</div>
+<div class="ART hide" id="/introToC++/art6">
+    <h2 class="artTitle">Ethics of Programming.</h2>
+    <p>Just like in everything we do, we should strive to maintain a high moral integrity. For programming, this primarily means respecting others' ideas and not trying to "steal" them. Just like writers shouldn't plagiarize others thoughts or ideas, we shouldn't steal others ideas and claim credit as our own. Provided without further information, you shouldn't be taking code from a programmer without asking permission. Additionally, it is not wise to go about sharing specialized code with others unless it isn't a big deal if someone steals it.<br><br>Now, many countries have copyright laws. As it is the duty of the government to protect the librerty and property of its people, the contract here is that the government will protect the property of the people, and in return, the people will strive to come up with more creative ideas. Now, over time various copyright licenses have been created. Anything that is in the <strong>public domain</strong> is open to anyone to use for any use, including commercial, without any need of credit. There are several copyright licenses and/or copyright ideas that you should be familiar with.</p>
+    <ul>
+        <li><strong>Creative Commons (CC)</strong> &#8594; Although there are a variety of types of CC licenses, a CC license generally lets you use the content as long as you give credit. A variety of other restrictions might be imposed like not allowing commercial use, or prohibiting you from creating derivations off it. For more detail, check out the <a target="_blank" href="https://creativecommons.org/about/cclicenses/">CreativeCommons website</a>.</li>
+        <li><strong>MIT License</strong> &#8594; The MIT License is a permissive license that lends it self to making open source software. It originated from the Massachusetts Institute of Technology (MIT), where it got its name from. The main restriction imposed on MIT is that they must include the same MIT license with their project.</li>
+        <li><strong>Fair Use</strong> &#8594; The idea of "fair use" is that creative works can be used in certain exceptional cases, that would normally be restricted under the copyright law. Fair use is designed to balance the intrests of the authors of creative works with the public interest. Various factors determine whether something can be used under the fair use doctrine: the purpose (commercial v. nonprofit), the nature (fiction v. fictional: facts and ideas are not protected by copyright, only their particular expression is), how much material is used, and the resulting effect of using it.</li>
+        <li><strong>Public Domain</strong> &#8594; Anything that is in the public domain can be used by anyone. Eventually, everything will enter into the public domain, but the time until copyrighted materials enter into the public domain is typically getting longer.</li>
+        <li><strong>No License</strong> &#8594; If no license is given for a creative work, then it is under exclusive copyright by defualt. This means that nobody else can copy, distribute, or modify your work (legally speaking). This means that must ask the author for permission before taking code from an unlicensed project.</li>
+    </ul>
+    <p>Many times the copyright license for a coding project (or otherwise) will be listed in a <em>.readme</em> file.<br>If you are coding a project as a job, say if you are software engineer designing code for a company, then you will most likely want to restrict your code from being used by others, especially for commercial uses. For learning platforms like KA, projects are not under the same copyright laws. Learning coders on KA are allowed to use ideas or code that is normally under a copyright license under <em>fair use</em>. Note that KA still enforces plagairizing principles so you must give credit to any code you use from someone else. Now, if you take a look at my <a target="_blank" href="https://www.khanacademy.org/computer-programming/escape-the-castle-2-a-mario-game/6096264874246144">Escape the Castle 2</a> project, you'll see it is a remake of Mario. Normally, I couldn't code such a project, because the idea came from the creator of Mario, but because I was learning to code on KA when I made it, I am allowed to do it under fair use, although I could not transport that project outside of KA.<br><br>On the topic of tutorials, most coding teachers (in whatever capacity) will clarify that you can use their code (sometimes including credit). Note that if a tutorial is teaching you something simple, such as how to code "HelloWorld" in C++, you don't need to provide credit, as you can use it under "fair use" because the idea is considered common knowledge. But the more specialized a tutorial you are taking, the more likely you will need to provide some type of credit. In such case, it is always better to be better safe than sorry and ask the teacher what type of credit they would like if any. When it comes to my tutorials on KA, you can use any of the code from my tutorials without credit needed, just make sure you ask questions if you don't understand any part of it!</p>
+</div>
+<div class="ART hide" id="/introToC++/art7">
+    <h2 class="artTitle">Writing your first C++ program!</h2>
+    <p>Whenever we setup our coding editor, we tested it with the hello world program. In this section, I am going to explain the generic basics of this C++ program. Please read the following code carefully, especially the comments.<br>At the beginning of the program, we include comments that act as the entry point of the program, and thus should notify the reader about the program's general features.</p>
+    <pre class="code">
+// HelloWorld.cpp : Console Application
+// This program says hello to the world!
+// Iron Programming
+// 2021-10-11
+
+// In a C++ program, we can include two types of comments, both usually highlighted green or another color in your coding editor.
+// The first type uses two forward slashes (//) and is used to type comments on a single line.
+/* The second type uses a pair of back/forward slashes with astericks (/* */) with any text that you want in between. */
+
+// Check this out, this is the first part of actual code in our C++ program!!!
+// So after our comments in our C++ program, we will include a group of C++ statements called HEADERS. Headers are used to access 
+#include &lt;iostream>
+
+// After the header statements, we might make other preparatory statements to prepare ourselves to run to the general algorithm (main)
+
+/* 
+ * The function @main serves as the "main program". 
+ * Later we will learn how to create other C++ 
+ * function (subprograms) which can be evaluated 
+ * within the main function.
+*/
+int main()
+{
+    // this statement sends 'Hello World!' into the output stream
+    // we will learn more about input and output streams later
+    std::cout &lt;&lt; "Hello World!";
+    
+    // If the program runs successfully, then we 
+    // return an exit status of 0. 
+    return (0);
+}
+    </pre>
+    <p>Before we leave though, let's talk a little more about the execution of main. When we code C++ programs, the operating system is considered the caller of the main function. The operating system expects main to return a value when it finishes executing: this is because the 'int' data type requires that we return an integer (we'll look more into this later when discussing data types). As we say, at the end of main we return 0. By convention, 0 means everything went okay. A return value of anything else (1, 2, 3, etc) means that something went wrong. During the course of our program, we could return a different number than 0 to let ourself know that something went wrong, and the program was likely forced to stop executing early.<br><br>Wow! Look at everything you've accomplished so far. You prepared everything to <em>really</em> start learning C++. Onwards!</p>
+</div>
+                    </div>
+                    
+                    <!-- C++ Syntax an Semantics Articles -->
+                    <div>
+<div class="ART hide" id="/syntaxAndSemantics/art1">
+    <h2 class="artTitle">Overview of C++ Syntax</h2>
+    <h4 class="sectionTitle">Library Headers</h4>
+    <p>As we already saw, there are 4 basic strutuctures that we use in programming. As of right now, we are only going to look at how to write basic sequences of instructions. Once we are able to write down basic instructions, we can combine them in more complicated structures. The first items we will look at are the header libraries, shown below.</p>
+    <pre class="code">
+// HelloWorld.cpp
+
+// This is the header section, where we include our libraries.
+// To include a library, we type #include, type a space, and then add our library. 
+// Most libraries are included in the &lt;libraryname> fashion.
+#include &lt;iostream>
+
+int main()
+{
+    std::cout &lt;&lt; "HelloWorld!";
+    
+    return (0);
+}
+    </pre>
+    <p>Let's examine several of the most common libraries. If you are dealing with Visual Studio, then you will probably deal with a library called <strong>"stdafx.h"</strong> or <strong>???</strong>. This is an exception to the rule that most libraries are called using &lt;>, and it is simply a library that calls in tools from previous versions of VisualStudio. If you are using tools from a previous version of VisualStudio, you might want to use that library (specific to VisualStudio).<br><br>The libraries that we will be using shortly include:</p>
+    <ul>
+        <li>&lt;iostream> &#8594; The input-output stream library (iostream) lets us write input/output statements, sending data as output or receiving it as input.</li>
+        <li>&lt;iomanip> &#8594; This library includes manipulators that we use for formatting input/output operations.</li>
+        <li>&lt;string> &#8594; Unfortunately, standard C++ does not come with a great way to write strings. Because of this, C++ programmers have created a nice string library that lets us easily create strings, and it includes a nice set of string operations.</li>
+    </ul>
+        <h4 class="sectionTitle">Declarations and Identifiers</h4>
+        <p>Whenever we want to create a new constant, variable, or some other element, we need to make a <strong>declaration</strong>. A declaration is mdae up of the <em><strong>identifier</strong></em> and the element being defined. Now, there are many different <em>types of data</em> that we could be storing. Every time that we make a declaration in C++, we must also tell what data type the element is. There are many different data types, which we will look at shortly. For now, let's just look at some examples of declarations, and identify the syntax and semantics of each statement.</p>
+    <pre class="code">
+int main()
+{
+    // let's make some declarations!
+    
+    // the first statement we are going to declare 
+    // is a variable, whose data type is an integer
+    int someInteger;
+    
+    // so we see that we type the structure of a declaration is like so: 
+    // DATATYPE IDENTIFIER;
+    
+    // let's see some other example
+    const int SOME_CONSTANT = 3.14;
+    
+    /** in this example, we added the keyword 
+    "const" to denotate that we are dealing with 
+    a constant and not a variable **/
+    
+    
+    return (0);
+}
+    </pre>
+    <p>Let's review the 3 parts of a declaration. (1.) The data type can be a numerical data type like int or float or a string data type like char or string.<br>(2.) The identifier is named in a variety of conventions, depending on what type of identifier we are dealing with. Regardless of which convention you are following, you must start the identifier with a letter or underscore (_), and you can only use letters, underscores, or numbers throughout the name.<br>(3.) Finally, we end our declaration statement with a semicolon. In C++, the compiler will break if we don't put a semicolon denotating the end of the statement (when we need to). There are some cases when we don't need to use semicolons.</p>
+    <p><strong>IMPORTANT NOTE:</strong> Your coding editor will likely tell you that there is an error on the line of code following a line that is missing a semicolon. This is because the compiler finishes the line of code (missing the semicolon), and when it tries to read the next line it runs into an error because it hadn't properly finished the previous line of code.</p>
+    <p>That is the very basics of declaration statements and identifiers. As we look at each data type individually we will look at how to declare them in more detail.</p>
+    <h4 class="sectionTitle">Exit Status</h4>
+    <p><strong>NOTE:</strong> This section will probably not be fully understood until we look at functions in more detail. It is recommended that you come back here and reread this once you learn about functions.</p>
+    <p>Every program in C++ must have the function <em>main</em>. This contains all of the C++ code that will be run in sequence. As of right now, the only code that is not inside the main is the comments at the top of the program and the header libraries. Later we will look at definining other functions and elements outside of main, but regardless, main is the main program where all the execution of the program goes on.<br>Now, main is a <em>value-returning function</em>, a type of function we'll look at later. Main is returning data of type int, signified by the int before the identifier main in the main's declaration. This means that we must <em>return</em> a value at the end of main, which is exactly what we do. The compiler expects a number (an integer more specifically) to be returned, and we can use this to our advantage. At the end of the execution of main, if everything went correctly without any errors, we want to return a 0, which tells us the <strong>exit status</strong>. We could put any number, but the convention is to use 0. This way, when we look at the program execution, if we see 0 we know that everything went smoothly.<br>On the other hand, if something goes wrong during the course of the program, we could choose to return some other value to return. It could be 1, 2, 3, or whatever integer you choose. Make sure to stay consistent with what number you choose for each type of problem. Later, we will see examples of this in action. For now, just understand that we need to return a number at the end of main, giving the exit status.</p>
+    <p>That is the basic overview of C++ syntax and semantics! Our next step is going to be to learn about identifiers and data types in more detail!</p>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art2">
+    <h2 class="artTitle">Identifiers: Numerical Data Types</h2>
+    <h4 class="sectionTitle">Integers v. Floats</h4>
+    <p>There are 3 general types of data types that we assign to our identifiers. Numerical Data types (such as int or float), String Data Types (such as char or string), and the Boolean Data Type (bool). First let's look at numerical data types.<br><br>There are two different groups of numerical data types: integers and float-point numbers. Integers are the same in programming as they are in math: basically numbers that can be written without a fractional component. Floating-Point is the name that we give to numbers that are not integers in programming. Let's take a small sidetrack and talk about floating-point numbers and the problems they present.</p>
+    <h5 class="s2Title">Floating Point Errors</h5>
+    <p>To give the basic run down, we call them floating point numbers because we use a floating decimal point in our storage of our decimal numbers, instead of a fixed point. A floating-point error occurs when the computer tries to store a fraction that results in a repeating decimal. When this happens, the computer might end up with a number like 0.30000000000000004 instead of 0.3. While this information is neat, it is not super useful on its own, so you might be interested in knowing more about how computers store numbers and how floating-point rounding errors can occur. If you are, check out this <a target="_blank" href="https://floating-point-gui.de/formats/fp/">article</a> for an explanation on floating-point numbers and <a target="_blank" href="https://youtu.be/PZRI1IfStY0">this video</a> for an explanation of floating-point rounding errors.</p>
+    <h5 class="s2Title">Defining Numerical Data Types</h5>
+    <p>Let's look at examples of defining numerical data types, both integers and floating numbers. When defining them, we can use data types with small storage or larger storage. The data types with larger storage lets you create bigger or smaller numbers. Basically, they have more binary digits allocated to store the data in question.</p>
+    <pre class="code">
+int main()
+{
+    // a basic integer
+    int someInteger;
+    someInteger = 25;
+    
+    // a basic floating-point number
+    float someFloat;
+    someFloat = 25.0;
+    
+    // we can also use larger versions of float
+    double someLargerFloat;
+    someLargerFloat = 11235123.51235 * 91236189.16;
+    
+    return (0);
+}
+    </pre>
+    <p>That wasn't too bad, was it? We can use numerical data types for variables, constants, functions, and more. The only thing we have to do now is to keep on learning!</p>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art3">
+    <h2 class="artTitle">Identifiers: String Data Types</h2>
+    <h4 class="sectionTitle">C++ Strings</h4>
+    <p>When I say string data types I am referring to the two data types that let us type characters. The "char" data type (char is short for character) lets us store a single character. The string data type is not a type of the C++ language, but a part of the C++ standard library. Let's look at examples of defining string data types (char or string).</p>
+    <pre class="code">
+int main()
+{
+    // a basic character defined with a data type of char
+    char letter;
+    letter = 'A'; // we use the single quotes for char data types
+    
+    // a basic string
+    string message;
+    message = ""; // null (empty) string
+    message = "Hello World!"; // use double quotes for a string
+    
+    return (0);
+}
+    </pre>
+    <p>The "string" data <em>type</em> (string) comes with a lot of built-in functions that we can use with it. We will look at all of the things we can do with strings later.<br>Note that when we type the string, we use double quotes to distinguish it from being an identifier or literal. For example, "1253" is not the same thing as 1253, and is stored differently on the computer.</p>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art4">
+    <h2 class="artTitle">Identifiers: The Boolean Data Type</h2>
+    <h4 class="sectionTitle">Boolean Expressions</h4>
+    <p>A boolean is a data type with 2 possible values: <em>true</em> or <em>false</em>. Booleans were named after George Boole who had some considerably accomplishments when it came to computer science. Of course, it isn't all that useful if all we do is set a bool variable directly to true or false, so what we usually do is use a <em>boolean expression</em>. Let's check out examples in code:</p>
+    <pre class="code">
+int main()
+{
+    // declare variables
+    int number;
+    bool numberIsLarge;
+    
+    // assign our integer a value
+    number = 25;
+    // assign our bool variable to true or false, 
+    // depending on if the boolean expression (number > 100)
+    // results in true or false
+    numberIsLarge = (number > 100);
+    
+    // in this case, numberIsLarge results in false.
+    
+    return (0);
+}
+    </pre>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art5">
+    <h2 class="artTitle">Variables vs. Constants</h2>
+    <h4 class="sectionTitle">Variables and Constants</h4>
+    <p>The diea of a variable or constant in programming is largely similar to that in real life or math. Whenever we define a variable in programming, we are storing dating (referenced by the identifier) in a memory location space. Data stored as a variable can change (vary) throughout the execution of the program. Data stored as a constant cannot change (it remains constant) in the execution of the program. <br><br>Additionally, the way that we define variables and constants are slightly different, both syntactically and conventionally.</p>
+    <pre class="code">
+int main()
+{
+    // examples of declared variables
+    int sadInt = 2;
+    float happyFloat = 13.0;
+    double angryFloat = 7.3
+    bool areYouAmazing = true;
+    // The <em>convention</em> for naming variable identifiers
+    // is to use <strong>camel casing</strong>: capitalizing
+    // the beginning of every word except the first
+    
+    // examples of constants
+    const int COOL_CONSTANT = 8;
+    const float A_COOL_NUMBER = 2.71828;
+    const double DOUBLY_COOL = 5.43656;
+    
+    // for constants, the naming convention is to use all caps
+    // with words separated by underscores
+    // additionally, you <em>have</em> to include the keyword
+    // "const" at the beginning of the declaration statement
+    
+    return (0);
+}
+    </pre>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art6">
+    <h2 class="artTitle">Using int and float together.</h2>
+    <h4 class="sectionTitle">Introducing Mixed Mode</h4>
+    <p>Let's look at a basic example where we try to assign the wrong data type to a variable.</p>
+    <pre class="code">
+int main()
+{
+    // declare vairables
+    int someInt;
+    float someFloat;
+    
+    // this is wrong!
+    someFloat = 3;
+    /** Above, we tried to assign an integer 3 to
+    a variable whose data type was float.
+    This is not possible: what the computer does, then,
+    is converts the integer 3 into a float 3.0,
+    and then stores that value into someFloat.
+    This extra step of converting an integer into a float
+    (or vice versa) is called <strong>type coercion</strong>. **/
+    
+    return (0);
+}
+    </pre>
+    <p>Type coercion is the implicit/automatic way of converting a value from one data type to another. We can cause type coercion when we try to assign an integer to a float variable or a float to an integer variable.<br> In this case, it woud simply be less confusing if we avided <em>mixing data types</em>. In other cases, type coercion can even lead to errors, so to avoid confusion and errors, we should convert data types when necessary, as shown below.</p>
+    <pre class="code">
+int main()
+{
+    // declare vairables
+    int someInt;
+    float someFloat;
+    
+    // this is right: explicit conversion
+    someFloat = float(3 * 2 - 5);
+    // whenever we convert to an integer (whether implicity
+    // or explicity), the computer chops off (truncates)
+    // everything past the decimal point. 
+    someInt = int(3.0 / 2.0 - 0.3);
+    // someInt = int(1.5 - 0.3) = int(1.5 - 0.3) = int(1.2) = 1
+    
+    return (0);
+}
+    </pre>
+    <p>In this case, we explicity converted data types, an action called <strong>type casting (type conversion)</strong>. In some instances, the only difference is clarity. Whenever we deal with any type of data conversion, we must always be careful to avoid errors, whether converting explicitly or implicitly.</p>
+</div>
+<div class="ART hide" id="/syntaxAndSemantics/art7">
+    <h2 class="artTitle">More on Data Types</h2>
+    <h4 class="sectionTitle">Categorizing Data Types</h4>
+    <p>Earlier we classified data types in 3 main groups based upon whether we were dealing with numbers, strings, or booleans. Now we will classify them based upon their more technical aspects. These categorizations have more to do with how they are stored in their binary form than to how they are used.</p>
+    <ul>
+        <li>Integral Types &#8594; The integral types are short, int, long, and char. All of these <em>integers</em> take up exactly one byte of information (at least 8 bist). This distinctino makes computer integers slightly different from mathematical integers. Additionally, we can add the keyword <em>unsigned</em> to any of these integral types to store only positive values.</li>
+        <li>Floating &#8594; Floating-point types include the float, double, and <em>long double</em>. The only differences here are the number of bits used to store the float-point number.</li>
+        <li>Address &#8594; The address data types are pointer, and reference: they are used with conjunction of other variables, dealing with how and where the variables are stored or referenced. We will not use these data types for a while.</li>
+        <li>Structured &#8594; The structured data types include array, struct, union, and class. These data types don't just create a single piece of data to be stored, but instead are a structured set of organized data. </li>
+    </ul>
+    <p>The Floating and Integral Data types are often categorized together as <em>simple</em> data types.</p>
+    <h4 class="sectionTitle">Storage Limits</h4>
+    <p>By now we have referenced several times that we can use different data types depending on how much storage we will need to store data. For example, if we want to store an numerical integer, we can use short, int, or long, depending on how many bits we will need to store the integer. For really large or small numbers we will need more bits. If the program tries to store a data value that exceeds the allocated memory space for that identifier then the result is <em>integer overflow</em>. This is an error that occurs anytime the computer tries to store a number that it doesn't have enough space to store. This can cause a variety of errors in the resulting number.<br>BELOW is a table showing some the allocated storage space for several data types.</p>
+    <table class="tTable">
+        <thead>
+            <tr>
+                <td>Type</td>
+                <td>Size in Bytes</td>
+                <td>Minimum Value*</td>
+                <td>Maximum Value*</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>char</td>
+                <td>1</td>
+                <td>-128</td>
+                <td>127</td>
+            </tr>
+            <tr>
+                <td>unsigned char</td>
+                <td>1</td>
+                <td>0</td>
+                <td>255</td>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>2</td>
+                <td>-32,768</td>
+                <td>32,767</td>
+            </tr>
+            <tr>
+                <td>unsigned short</td>
+                <td>2</td>
+                <td>0</td>
+                <td>65,535</td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>4</td>
+                <td>-2,147,483,648</td>
+                <td>+2,147,483,647</td>
+            </tr>
+            <tr>
+                <td>unsigned int</td>
+                <td>4</td>
+                <td>0</td>
+                <td>+4,293,967,295</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>8</td>
+                <td>-9,223,372,036,854,775,808</td>
+                <td>+9,223,372,036,854,775,807</td>
+            </tr>
+            <tr>
+                <td>unsigned long</td>
+                <td>8</td>
+                <td>0</td>
+                <td>+18,446,744,073,709,551,615</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 3px; margin-left: -5px">*These values are for one particular machine. Your machine's values may be different.</p>
+    <p>Credit to <em>Programming and Problem Solving with C++</em> for the stats in the table above.<br><br>So that is the overview of data types! Hopefully by now, you should be able to write declarations for any of these simple data types that we discussed. Later on, we'll look in more depth into the more complicated data types such as the structured data types.</p>
+</div>
+                    </div>
+                    
+                    <span id="bCourse" onclick="courseHome()" class="material-icons">north_west</span>
+                </div>
+                
+                <button id="clearProgress" onclick="clearProgress()">Clear Progress</button>
+            </section>
+            
+            <!-- Section: coding Page -->
+            <section id="coding-page" class="page">
+                <h1 class="page-title">Coding Challenges</h1>
+                
+                <div id="projectSelection">
+                <h5 class="cHeader">Contests</h5>
+                <div class="projectContainer">
+                    <!--<div class="project"></div>
+                    <div class="project"></div>
+                    <div class="project"></div>
+                    <div class="project"></div>-->
+                    <p id="noContests">There are currently no contests. Let me know<br>any contest ideas you have in the T&T!</p>
+                </div>
+                
+                <h5 class="cHeader">Tutorials / Templates</h5>
+                <div class="projectContainer">
+                    <div class="project">
+                        <h5>HelloWorld.cpp</h5>
+                        <p>Learn how to create a <br>simple program to <br>say Hello to the world!</p>
+                        <span class="levelOfProject">1 (beginner)</span>
+                        <span onclick="goToProject('helloWorld')" class="material-icons goToProject">swipe_right_alt</span>
+
+                    </div>
+                </div>
+                </div>
+                
+                <div id="codingEditor">
+<div id="helloWorld">
+<pre class="code">
+// HelloWorld.cpp
+
+#include &lt;iostream>
+
+int main()
+{
+    std::cout &lt;&lt; "HelloWorld!";
+    
+    return (0);
+}
+</pre>
+</div>
+                    <button onclick="returnToProjects()" id="returnToProjects">Return to Project List</button>
+                    <button onclick="copyCode()" id="copyCode">Copy Code</button>
+                </div>
+            </section>
+            
+            <!-- Section: Our team -->
+            <section id="ourTeam-page" class="page">
+                <h1 class="page-title">Our Team</h1>
+                
+                <div id="membersGroup">
+                    
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer of the webpage -->
+        <footer>
+            <section>
+                <h6>Subscribe to Iron <a href="https://www.khanacademy.org/computer-programming/irons-website/4599679522914304">here</a> for more content and tutorials.</h6>
+                <h6>Made for Week 3 of <a href="https://www.khanacademy.org/computer-programming/khantober-2021/6641280046120960">Khantober 2021</a>.</h6>
+            </section>
+            <section>
+                <h6>Credits: <a href="https://www.khanacademy.org/profile/ncochran2">Iron Programming</a>.</h6>
+                <h6><a href="javascript:switchPage('ourTeam-page');" title="Our Team"><button id="teamButton">Our Team</button></a></h6>
+            </section>
+        </footer>
+        
+        <!-- file.js for members -->
+        <script>
+            var members = [
+                {
+                    name: "Iron Programming",
+                    status: "Founder",
+                    avatar: "https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/creatures/Hopper-Cool.png"
+                }
+            ];
+            
+            for (var i = 0; i < members.length; i++) {
+                var M = members[i];
+                
+                var newMember = document.createElement("div");
+                newMember.classList.add('member');
+                
+                var newImg = document.createElement('img');
+                newImg.src = M.avatar;
+                
+                var mName = document.createElement('h3');
+                mName.textContent = M.name;
+                
+                var mTitle = document.createElement('p');
+                mTitle.textContent = M.status;
+                
+                newMember.appendChild(newImg);
+                newMember.appendChild(mName);
+                newMember.appendChild(mTitle);
+                
+                document.getElementById('membersGroup').appendChild(newMember);
+            }
+            
+            //alert(document.getElementById('membersGroup'))
+        </script>
+        
+        <!-- file.js for general interactivity -->
+        <script type="text/javascript">
+            /* Switches page */
+            function switchPage(page) {
+                // hide all pages; then show the current one
+            	document.querySelectorAll('.page').forEach(function(p) {
+            	    p.style.display = 'none';
+            	});
+                document.getElementById(page).style.display = 'block';
+                
+                // highlight the active page-button
+                document.querySelectorAll('nav button').forEach(function(n) {
+            	    n.classList.remove('selected');
+            	});
+                document.getElementById(page + "Button").classList.add('selected');
+            };
+            
+            // display Homepage onload
+            switchPage('home-page');
+            
+            function fadeOut(el) {
+                var opacity = Number(window.getComputedStyle(el).getPropertyValue("opacity"));
+                var int = setInterval(function() {
+                    opacity += (0 - opacity)/5;
+                    el.style.opacity = opacity;
+                    if (opacity < 0.2) {
+                        opacity = 0;
+                        el.style.opacity = opacity;
+                        el.classList.add('hide');
+                        el.classList.remove('show');
+                        clearInterval(int);
+                    }
+                }, 10);
+            }
+            
+            function fadeIn(el) {
+                var opacity = /*Number(window.getComputedStyle(el).getPropertyValue("opacity"))*/0;
+                el.classList.remove('hide');
+                el.classList.add('show');
+                var int = setInterval(function() {
+                    opacity += (1 - opacity)/5;
+                    el.style.opacity = opacity;
+                    if (opacity > 0.8) {
+                        opacity = 1;
+                        el.style.opacity = opacity;
+                        clearInterval(int);
+                    }
+                }, 10);
+            }
+            
+            var sidebar = document.getElementById('sidebar');
+            var hoverBar = document.getElementById('hoverOpen');
+            sidebar.onmouseover = function() {
+                sidebar.classList.remove('close');
+                sidebar.classList.add('open');
+                //fadeOut(hoverBar);
+            };
+            sidebar.onmouseout = function() {
+                sidebar.classList.add('close');
+                sidebar.classList.remove('open');
+                //fadeIn(hoverBar);
+            };
+            
+            fadeOut(document.getElementById('currentArticle'));
+            
+            fadeOut(document.getElementById('courseArticleList'));
+    	</script>
+    	
+    	<!-- file.js for creating and
+    	     organizing course material  -->
+    	<script>
+            var courses = [
+                {
+                    title: "Intro to C++",
+                    path: "/introToC++",
+                    progress: 0,
+                    articles: [
+                        {path: "/art1", done: false, title: "What is Programming?"},
+                        {path: "/art2", done: false, title: "Setting up your Coding Environment."},
+                        {path: "/art3", done: false, title: "Syntax and Semantics."},
+                        {path: "/art4", done: false, title: "Introduction to Algorithms."},
+                        {path: "/art5", done: false, title: "History of Programming and C++."},
+                        {path: "/art6", done: false, title: "Ethics of Programming."},
+                        {path: "/art7", done: false, title: "Writing your first C++ program!"},
+                    ]
+                },
+                {
+                    title: "C++ Syntax and Semantics",
+                    path: "/syntaxAndSemantics",
+                    progress: 0,
+                    articles: [
+                        {path: "/art1", done: false, title: "Overview of C++ Syntax"},
+                        {path: "/art2", done: false, title: "Identifiers: Numeric Data Types"},
+                        {path: "/art3", done: false, title: "Identifiers: String Data Types"},
+                        {path: "/art4", done: false, title: "Identifiers: The Boolean Data Type"},
+                        {path: "/art5", done: false, title: "Variables vs. Constants"},
+                        {path: "/art6", done: false, title: "Using int & float Together"},
+                        {path: "/art7", done: false, title: "More on Data Types"}
+                    ]
+                }
+            ];
+            
+            function createCourseList(index) {
+                // object & DOM element
+                var C = courses[index],
+                    cDOM = document.getElementById('courseArticleList');
+                // TITLE
+                cDOM.children[0].textContent = C.title;
+                
+                var arts = cDOM.children[1],
+                    newContent = "";
+                for (var i = 0; i < C.articles.length; i++) {
+                    var ART = C.articles[i];
+                    newContent += "<div class='article' onclick=\"goToArticle('" + (C.path + ART.path) + "', " + index + "," + i + ")\"> <span class='material-icons " + ((ART.done) ? ("checkFinished") : ("checkUnfinished")) + "'>done</span> <h3>" + ART.title + "</h3> </div>";
+                }
+                arts.innerHTML = newContent;
+            }
+            
+            // Local Storage Management
+            function storeAll() {
+                localStorage.setItem("courses", JSON.stringify(courses));
+            }
+            if (localStorage.getItem("courses")){
+                courses = JSON.parse(localStorage.getItem("courses"));
+            }
+            
+            function clearProgress() {
+                var cont = confirm('Are you sure you want to clear all progress? This action cannot be undone.');
+                if (cont) {
+                    localStorage.removeItem("courses");
+                    var courses = document.getElementsByClassName("course");
+                    alert("All progress has been deleted, please restart the program to refresh.");
+                }
+            }
+            
+            // create profile course list
+            function createProfileCourseList () {
+                var list = document.getElementById('profileCourseList');
+                
+                for (var i = 0; i < courses.length; i++) {
+                    var C = courses[i];
+                    if (C.progress === 0) {
+                        continue;
+                    }
+                    
+                    var div = document.createElement('div');
+                    div.classList.add('profileCourse');
+                    div.onclick = function() {
+                        switchPage('learn-page');
+                        var articleList = document.getElementById('courseArticleList');
+                        var courseManagement = document.getElementById('courses');
+                        fadeIn(articleList);
+            	        createCourseList(i - 1);
+                    };
+                    
+                    var courseName = document.createElement('h5');
+                    courseName.textContent = C.title;
+                    
+                    div.appendChild(courseName);
+                    list.appendChild(div);
+                }
+                
+                if (list.children.length === 0) {
+                    list.innerHTML = "<p id='noCourses'>You have not started any courses.<br>Check out the Programming/C++ courses today!</p>";
+                }
+            }
+            
+            function saveSettings() {
+                document.getElementById('displayName').textContent = document.getElementById('editDisplayName').value;
+                document.getElementById('userAvatar').src = document.getElementById("chooseAvatar").value;
+                fadeOut(document.getElementById("editProfilePage"));
+                
+                localStorage.setItem("userAvatar", document.getElementById("chooseAvatar").value);
+                localStorage.setItem("selectedIndex", document.getElementById("chooseAvatar").selectedIndex);
+                localStorage.setItem("displayName", document.getElementById('editDisplayName').value)
+            }
+            
+            // update settings on start
+            fadeOut(document.getElementById("editProfilePage"));
+            if (localStorage.getItem("userAvatar")) {
+                document.getElementById('displayName').textContent = localStorage.getItem("displayName");
+                document.getElementById('userAvatar').src = localStorage.getItem("userAvatar");
+                document.getElementById('editDisplayName').value = localStorage.getItem("displayName");
+                document.getElementById('chooseAvatar').selectedIndex = localStorage.getItem("selectedIndex");
+            }
+            var displayName = document.getElementById('displayName').textContent,
+                imagePath = document.getElementById('userAvatar').src;
+            
+            createProfileCourseList();
+    	</script>
+    	
+    	<!-- file.js for creating C++ 
+    	     course/article management -->
+    	<script>
+    	    function updateCourse(course, index) {
+                var cWidth = course.getBoundingClientRect().width, 
+                    cHeight = course.getBoundingClientRect().height;
+                
+                // replace percentage
+                var perc = course.children[2];
+                var percentage = courses[i].progress;
+                perc.style.marginRight = "10px";
+                perc.style.marginLeft = "10px";
+                
+                perc.textContent = percentage + "%";
+                
+                // set course name font size
+                var courseName = course.children[1];
+                if (courseName.textContent.length > 22) {
+                    courseName.style.marginTop = '10px';
+                } else {
+                    courseName.style.marginTop = '20px';
+                }
+                
+                var seeContent = course.children[0];
+                seeContent.onmousedown = function() {
+                    var articleList = document.getElementById('courseArticleList');
+                    var courseManagement = document.getElementById('courses');
+                        fadeIn(articleList);
+            	        createCourseList(index);
+                };
+    	    }
+    	    
+    	    var courseNames = document.getElementsByClassName("course");
+            var i = 0;
+            function loop() {
+                setTimeout(function() {
+                    if (i < courseNames.length) {
+                        updateCourse(courseNames[i], i);
+                        i++;
+                        loop();
+                    } else {
+                        
+                    }
+                }, 1000);
+            }
+            loop();
+    	    
+    	    function goToArticle(id, index1, index2) {
+    	        document.querySelectorAll('.ART').forEach(function(ART) {
+            	    ART.classList.remove('show');
+            	    ART.classList.add('hide');
+            	});
+    	        
+    	        fadeIn(document.getElementById(id));
+    	        
+    	        fadeIn(document.getElementById('currentArticle'));
+    	        
+    	        fadeOut(document.getElementById('courses'));
+    	        fadeOut(document.getElementById("courseArticleList"));
+    	        
+    	        // update progress
+    	        courses[index1].articles[index2].done = true;
+    	        var article = document.querySelectorAll(".article span")[index2];
+    	        article.classList.remove("checkUnfinised");
+    	        article.classList.add("checkFinished");
+    	        
+    	        var newP, totalC = 0, yesCount = 0;
+    	        for (var i = 0; i < courses[index1].articles.length; i++) {
+    	            if (courses[index1].articles[i].done) {
+    	                yesCount++;
+    	            }
+    	            totalC++;
+    	        }
+    	        newP = Math.round(100 * yesCount / totalC);
+    	        
+    	        courses[index1].progress = newP;
+    	        var perc = document.getElementsByClassName("course")[index1].children[2];
+    	        perc.textContent = newP + "%";
+    	        
+    	        storeAll();
+    	    }
+    	    
+    	    function closeCourseContent() {
+    	        fadeOut(document.getElementById("courseArticleList"));
+    	    }
+    	    function courseHome() {
+    	        fadeOut(document.getElementById("currentArticle"));
+    	        fadeIn(document.getElementById("courses"));
+    	        fadeIn(document.getElementById("courseArticleList"));
+    	    }
+    	</script>
+    	
+    	<!-- file.js for managing projects -->
+    	<script>
+    	    var codingEditor = document.getElementById('codingEditor'),
+    	        projectList = document.getElementById('projectSelection');
+    	    
+    	    var currentID = "";
+    	    
+    	    function goToProject(id) {
+    	        var project = document.getElementById(id);
+    	       fadeIn(codingEditor);
+    	       fadeIn(project);
+    	       fadeOut(projectList);
+    	       
+    	       currentID = id;
+    	    }
+    	    
+    	    function returnToProjects() {
+    	        var project = document.getElementById(currentID);
+    	       fadeOut(codingEditor);
+    	       fadeOut(project);
+    	       fadeIn(projectList);
+    	    }
+    	    /** CREDIT: StackOverflow somewhere **/
+    	    function copyStringToClipboard (str) {
+               // Create new element
+               var el = document.createElement('textarea');
+               // Set value (string to be copied)
+               el.value = str;
+               // Set non-editable to avoid focus and move outside of view
+               el.setAttribute('readonly', '');
+               el.style = {position: 'absolute', left: '-9999px'};
+               document.body.appendChild(el);
+               // Select text inside element
+               el.select();
+               // Copy text to clipboard
+               document.execCommand('copy');
+               // Remove temporary element
+               document.body.removeChild(el);
+            }
+    	    function copyCode() {
+    	       var projectCode = document.getElementById(currentID).children[0].textContent;
+    	       copyStringToClipboard(projectCode);
+    	       alert('The code has been copied to your clipboard. Feel free to use this code anywhere by pasting it (ctrl-v or command-v).')
+    	    }
+    	    
+    	    fadeOut(codingEditor)
+    	</script>
+    	
+    	<!-- file.js to highlight code syntax -->
+        <script>
+    	    var code = document.getElementsByClassName('code');
+    	    function addLines(code) {
+                code.style.padding = "25px";
+            }
+            for (var a = 0; a < code.length; a++) {
+                addLines(code[a]);
+            }
+    	    
+            var HL = {
+                highlight: function(code) {
+                    /** highlight orange **/
+                    //code = code.replace(/&lt;([\s\S]*?)>/g, '<span class="orange">$1</span>'); // PUT FIRST
+                    //code = code.replace(/(\"[\s\S]*?\")/g, '<span class="orange">$1</span>');
+                    //code = code.replace(/\"([\s\S]*?)\"/g, '<span class="red">"$1"</span>');
+                    //code = code.replace(/(\<[\s\S]*?\>)/g, '<span class="orange">$1</span>');
+                    code = code.replace(/(\"[\s\S]*?\")/g, '<span class="orange">$1</span>');
+                    
+                    /** highlight green **/
+                    code = code.replace(/(\/\*[^\*][\s\S]*?\*\/)/g, '<span class="green">$1</span>');
+                    code = code.replace(/(\/\/.*?$)/gm, '<span class="green">$1</span>');
+                    code = code.replace(/(\/\*\*[\s\S]*?\*\/)/g, '<span class="green">$1</span>');
+                    
+                    /** highlight blue **/
+                    code = code.replace(/#include/g, '<span class="blue">#include</span>');
+                    code = code.replace(/int/g, '<span class="blue">int</span>');
+                    code = code.replace(/float/g, '<span class="blue">float</span>');
+                    code = code.replace(/double/g, '<span class="blue">double</span>');
+                    code = code.replace(/return/g, '<span class="blue">return</span>');
+                    code = code.replace(/using namespace/g, '<span class="blue">using namespace</span>');
+                    code = code.replace(/const/g, '<span class="blue">const</span>');
+                    code = code.replace(/bool/g, '<span class="blue">bool</span>');
+                    
+                    return code;
+                },
+                all:function(list) {
+                    for (var i = 0; i < list.length; i++) {
+                        list[i].innerHTML = this.highlight(list[i].innerHTML);
+                    }
+                }
+            };
+            HL.all(code);
+        </script>
+    </body>
+</html>
